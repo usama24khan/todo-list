@@ -65,8 +65,14 @@
 }
 .lists-container{
   margin: 5px 0px;
-  color: white;
+  color: rgb(211, 125, 125);
   
+}
+.lists-container p{
+  color: rgb(223, 99, 99);
+  font-size: 1.2rem;
+  font-family: cursive;
+  text-shadow: 2px 2px 5px black;
 }
 .lists-container li{
   display: flex;
