@@ -8,8 +8,14 @@ function Todo() {
          setInputText(e.target.value)
     }
     const clickHandler = (inputText)=>{
+      if(inputText == ""){
+        alert("Please type Something in Todo ")
+      }else{
+
+      
           setLists(list=>[...lists,inputText])
           setInputText("")
+        }
     }
     const del= (index)=>{
       console.log(lists)
@@ -34,7 +40,7 @@ function Todo() {
         <div className="lists-container">
           <ol>{lists.length<1 && <p>Nothing To show</p>}
            {lists.map((list,index)=> 
-        <li key={index}>  {list} <button onClick={()=>del(index)} className='btn del'><i class="fa-solid fa-trash"></i></button></li>
+        <li key={index}> {index+1}: {list} <button onClick={()=>del(index)} className='btn del'><i class="fa-solid fa-trash"></i></button></li>
         )}
         </ol>
         </div>
