@@ -38,7 +38,7 @@ function Todo() {
             <button onClick={()=>clickHandler(inputText)} className='btn'>Add</button>
         </div>
         <div className="lists-container">
-          <ol>{lists.length<1 && <p>Nothing To show</p>}
+          <ol>{lists.length<1 && <p>Nothing To Show</p>}
            {lists.map((list,index)=> 
         <li key={index}> {index+1}: {list} <button onClick={()=>del(index)} className='btn del'><i class="fa-solid fa-trash"></i></button></li>
         )}
