@@ -80,6 +80,18 @@ body{
   color: white;
   font-weight: bold;
   margin: 15px 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid var(--bg-color);
+  box-shadow: 2px 2px 8px black;
+  padding: 8px;
+  border-radius: 12px;
+
+}
+.lists-container ol{
+  position: relative;
+    right: 31px;
 }
 .del{
   padding: 1;
