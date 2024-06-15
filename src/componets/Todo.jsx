@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function Todo() {
 
-    const [inputText,setInputText]= useState("")
-    const [lists,setLists]=useState([])
+    const [inputText,setInputText]= useState('')
+    const [lists,setLists]=useState(()=>{
+      const saveTodo = localStorage.getItem('todos')
+      return saveTodo?  JSON.parse(saveTodo): []
+    })
+
     const changeHandler = (e)=>{
          setInputText(e.target.value)
     }
@@ -14,20 +18,23 @@ function Todo() {
 
       
           setLists(list=>[...lists,inputText])
+          
           setInputText("")
+
         }
     }
     const del= (index)=>{
-      console.log(lists)
+      
       let updateList = lists.filter((e,i)=>{
       return i !== index
       })
-      console.log(updateList)
+      
       setLists(updateList)
 
     }
-    
-  
+   useEffect(()=>{
+    localStorage.setItem('todos',JSON.stringify(lists))
+   },[lists])   
   return (
     <div className='container'>
         <h1>ToDo-List</h1>
@@ -40,7 +47,7 @@ function Todo() {
         <div className="lists-container">
           <ol>{lists.length<1 && <p>Nothing To Show</p>}
            {lists.map((list,index)=> 
-        <li key={index}> {index+1}: {list} <button onClick={()=>del(index)} className='btn del'><i class="fa-solid fa-trash"></i></button></li>
+        <li key={index}> {index+1}: {list} <button onClick={()=>del(index)} className='btn del'><i className="fa-solid fa-trash"></i></button></li>
         )}
         </ol>
         </div>
